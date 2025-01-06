@@ -11,7 +11,7 @@ code.solve.argtypes = [ctypes.POINTER(ctypes.c_double),
                        ctypes.c_int]
 
 # Parameters
-h = 0.001  # Step size (same as in your C code)
+h = 0.001  # Step size 
 steps = 10000  # Number of steps for the Euler's method
 
 # Initial values
