@@ -1,10 +1,44 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
 \documentclass[journal]{IEEEtran}
 \usepackage[a5paper, margin=10mm, onecolumn]{geometry}
-\usepackage{lmodern}
-\usepackage{amsmath, amssymb}
+\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{bm} 
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+\usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
 
 \title{8.2.2}
 \author{EE24BTECH11004 - Ankit Jainar}
@@ -71,16 +105,9 @@ Matrix representation for solving this system:
 \end{align}
 where:
 \begin{align}
-    \bm{A} = \begin{bmatrix}
-        2 & 0 \\
-        1 & 1
-    \end{bmatrix}, \quad
-    \bm{x} = \begin{bmatrix}
-        x \\ y^2
-    \end{bmatrix}, \quad
-    \bm{b} = \begin{bmatrix}
-        1 \\ 1
-    \end{bmatrix}.
+    V_1 &= \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix}, \quad
+    \vec{x} = \begin{pmatrix} x \\ y^2 \end{pmatrix}, \quad
+    \vec{b} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
 \end{align}
 
 \textbf{Step 2:Intersection of Two Circles Using Matrix Approach}
@@ -137,13 +164,22 @@ This simplifies to:
 \textbf{ Substituting \( x \) into One Circle Equation}
 
 Substitute \( x = \frac{1}{2} \) into the second circle equation \( g_2(x, y) \):
+Substituting \(\vec{x}\) into the circle equation:
 \begin{align}
-    \left( \frac{1}{2} \right)^2 + y^2 &= 1 \\
-    \frac{1}{4} + y^2 &= 1 \\
-    y^2 &= \frac{3}{4}.
+    \begin{pmatrix} \frac{1}{2} \\ y \end{pmatrix}^\top \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} \frac{1}{2} \\ y \end{pmatrix} - 1 = 0.
 \end{align}
 
-Solve for \( y \):
+Expanding the terms:
+\begin{align}
+    \frac{1}{4} + y^2 - 1 = 0.
+\end{align}
+
+Simplifying:
+\begin{align}
+    y^2 = \frac{3}{4}.
+\end{align}
+
+Thus:
 \begin{align}
     y = \pm \frac{\sqrt{3}}{2}.
 \end{align}
@@ -199,14 +235,60 @@ where:
     f(x_k) = \sqrt{2x_k - x_k^2}, \quad g(x_k) = \sqrt{1 - x_k^2}.
 \end{align}
 
-\textbf{Resultant Equation:}
+\textbf{Difference Equation:}
 
 The iterative formula for the trapezoidal rule is:
 \begin{align}
     A_{\text{new}} = A_{\text{old}} + h \cdot \left[(f(x_{k+1}) - g(x_{k+1})) + (f(x_k) - g(x_k)) \right].
 \end{align}
+\begin{align}
+    A_{\text{new}} = A_{\text{old}} + h \cdot \bigg[ & \left(\sqrt{2x_{k+1} - x_{k+1}^2} - \sqrt{1 - x_{k+1}^2}\right) \nonumber \\
+    & + \left(\sqrt{2x_k - x_k^2} - \sqrt{1 - x_k^2}\right) \bigg].
+\end{align}
 
-\textbf{Step 4: Numerical Integration:}
+The difference equation for the area is given as:
+\begin{align}
+    A_{n + 1} &= A_n + \frac{h}{2} \left[ y(x_n) + h \cdot y^{\prime}(x_n) + y(x_n) \right] \\
+    A_{n + 1} &= A_n + h \cdot \left[ y(x_n) + \frac{h}{2} y^{\prime}(x_n) \right] \\
+    A_{n + 1} &= A_n + h \cdot y(x_n) + \frac{h^2}{2} y^{\prime}(x_n)
+\end{align}
+
+The curves given are:
+\begin{align}
+    (x - 1)^2 + y^2 = 1 \quad \text{and} \quad x^2 + y^2 = 1.
+\end{align}
+Rearranging the equations for \( y(x) \), the piecewise function for the bounded region is:
+\begin{align}
+    y(x) =
+    \begin{cases}
+        \sqrt{1 - x^2} & \quad 0 \leq x \leq \frac{1}{2} \\
+        \sqrt{1 - (x - 1)^2} & \quad \frac{1}{2} \leq x \leq 1
+    \end{cases}
+\end{align}
+
+\textbf{Substituting \( y(x) \) into the Difference Equation:}
+\newline
+By substituting the piecewise function \( y(x) \) into the difference equation, we get:
+\begin{align}
+    A_{n + 1} &=
+    \begin{cases}
+        A_n + h \sqrt{1 - x_n^2} + \frac{h^2}{2} \left(-\frac{x_n}{\sqrt{1 - x_n^2}} \right) & \quad 0 \leq x_n \leq \frac{1}{2}, \\
+        A_n + h \sqrt{1 - (x_n - 1)^2} + \frac{h^2}{2} \left(-\frac{(x_n - 1)}{\sqrt{1 - (x_n - 1)^2}} \right) & \quad \frac{1}{2} \leq x_n \leq 1.
+    \end{cases}
+\end{align}
+
+The value of \( x_{n+1} \) is updated as:
+\begin{align}
+    x_{n+1} = x_n + h.
+\end{align}
+
+\textbf{Computational Area:}
+\newline
+Using the trapezoidal rule with a small step size \( h \), the computational area is: $1.2284$
+
+\textbf{Theoretical Area:}
+\newline
+Using the analytical approach, the theoretical area is:$\frac{2\pi}{3} - \frac{\sqrt{3}}{2} \approx 1.22837$
 
 By substituting the values of $x_k$, $f(x_k)$, and $g(x_k)$ into the trapezoidal rule, we compute the area iteratively.
 
