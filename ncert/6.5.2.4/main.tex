@@ -43,7 +43,7 @@
 
 \title{6.5.2.4}
 \author{EE24BTECH11004 - Ankit Jainar}
- \maketitle
+\maketitle
 % \newpage
 % \bigskip
 {\let\newpage\relax\maketitle}
@@ -52,52 +52,67 @@
 \renewcommand{\thetable}{\theenumi}
 \setlength{\intextsep}{10pt} % Space between text and floats
 
-
 \numberwithin{equation}{enumi}
 \numberwithin{figure}{enumi}
 \renewcommand{\thetable}{\theenumi}
-
 
 \textbf{Question}:\\
 Find the local minimum/maximum of the given function:\\
 $f(x) = |\sin(4x) + 3|$
 \\
-\textbf{Solution: }\\
-We use the method of gradient descent to find the minimum/maximum of the given function. Since the function involves an absolute value, we carefully evaluate its behavior.\\
-The function can be rewritten as:
+
+\section*{Theoretical Method}
+We analyze the function theoretically to find its critical points. Let:
 \begin{align}
     f(x) = |g(x)|, \quad g(x) = \sin(4x) + 3
 \end{align}
+
 The critical points of \(g(x)\) occur where \(g'(x) = 0\). Differentiating \(g(x)\):
 \begin{align}
     g'(x) = 4\cos(4x)
 \end{align}
-Setting \(g'(x) = 0\), we get:
+Setting \(g'(x) = 0\), we find:
 \begin{align}
     \cos(4x) = 0 \implies 4x = \frac{\pi}{2} + n\pi \implies x = \frac{\pi}{8} + \frac{n\pi}{4}, \; n \in \mathbb{Z}
 \end{align}
 
-Using gradient descent, starting with an initial guess, and applying the update rule:
+For these \(x\)-values, we calculate \(g(x)\) to find the maximum and minimum values of \(|g(x)|\):
+\begin{align}
+    g(x) = \sin(4x) + 3, \quad f(x) = |g(x)|
+\end{align}
+At the critical points, evaluate \(f(x)\) directly to determine the local maximum and minimum values. The function \(f(x)\) achieves its minimum value at \(f(x) = 3\) and maximum value at \(f(x) = 4\).
+
+\section*{Computational Method}
+We use gradient descent to find the local minima and maxima numerically. Gradient descent works iteratively using the following update rule:
 \begin{align}
     x_{n+1} &= x_n - \mu f^{\prime}(x_n)
 \end{align}
-Where the gradient \(f^{\prime}(x_n)\) is numerically computed as:
+
+The gradient \(f^{\prime}(x)\) is computed numerically as:
 \begin{align}
     f^{\prime}(x) \approx \frac{f(x + \delta) - f(x - \delta)}{2\delta}
 \end{align}
 
-After applying the algorithm with:
-Initial guess = 0, Step size = 0.01, Tolerance(min value of gradient) = \(1e-5\), we obtain the following results:\\
+\noindent \textbf{Algorithm Steps:}
+\begin{itemize}
+    \item \textbf{Initialize:} Start with an initial guess for \(x\), a step size (\(\mu\)), and a threshold for convergence.
+    \item \textbf{Update:} Compute \(f^{\prime}(x_n)\) and update \(x_n\) using the update rule.
+    \item \textbf{Convergence:} Stop when \(|f^{\prime}(x_n)| < \text{threshold}\).
+\end{itemize}
+
+\noindent \textbf{Results:}
+Using an initial guess \(x = 0\), step size \(\mu = 0.01\), and threshold \(1e-5\), the numerical method yields:
 \begin{align}
     x_{min} &= 0.785398, \; f(x_{min}) = 3.000000\\
     x_{max} &= 0.392699, \; f(x_{max}) = 4.000000
 \end{align}
 
-Thus, the maximum value of \(f(x)\) is 4, and the minimum value of \(f(x)\) is 2. These values are confirmed numerically and graphically.\\
+Thus, the maximum value of \(f(x)\) is 4, and the minimum value of \(f(x)\) is 3. These values match the theoretical results.
 
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.7\columnwidth]{figs/fig.png}
-\end{figure}
+   \end{figure}
+
 \end{document}
 

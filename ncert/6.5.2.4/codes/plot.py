@@ -1,3 +1,4 @@
+import ctypes
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -9,21 +10,26 @@ def f(x):
 def df(x, delta=1e-5):
     return (f(x + delta) - f(x - delta)) / (2 * delta)
 
-# Gradient descent function to find local minima
-def gradient_descent(init_guess, step_size, tolerance, delta=1e-5):
-    current_guess = init_guess
-    grad = df(current_guess, delta)
-    iterations = 0
+# Define the shared library and functions
+# Assuming the compiled shared library is named 'code.so'
+c_lib = ctypes.CDLL('./code.so')  # Replace with the actual name of your .so file
 
-    while np.abs(grad) > tolerance:
-        grad = df(current_guess, delta)
-        current_guess -= step_size * grad
-        iterations += 1
+# Define argument and return types for the C function 'run_gradient_descent'
+c_lib.run_gradient_descent.argtypes = [
+    ctypes.c_double,  # init_guess
+    ctypes.c_double,  # step_size
+    ctypes.c_double,  # tolerance
+    ctypes.c_double,  # delta
+    ctypes.POINTER(ctypes.c_double)  # minimum (output)
+]
 
-    print(f"Gradient descent converged after {iterations} iterations.")
-    return current_guess
+# Gradient descent via the C function
+def run_gradient_descent(init_guess, step_size, tolerance, delta=1e-5):
+    minimum = ctypes.c_double(0)  # Placeholder for the result
+    c_lib.run_gradient_descent(init_guess, step_size, tolerance, delta, ctypes.byref(minimum))
+    return minimum.value
 
-# Generate points for the plot
+# Generate points for plotting
 def generate_points(n, x_min, x_max):
     x = np.linspace(x_min, x_max, n)
     y = f(x)
@@ -34,17 +40,20 @@ if __name__ == "__main__":
     # Generate points for the function plot
     x_min, x_max = -np.pi, np.pi
     n_points = 1000
-    x, y = generate_points(n_points, x_min, x_max)
+    x_vals, y_vals = generate_points(n_points, x_min, x_max)
 
-    # Run gradient descent
+    # Parameters for gradient descent
     init_guess = 0.5
     step_size = 0.01
     tolerance = 1e-6
-    minimum = gradient_descent(init_guess, step_size, tolerance)
+    delta = 1e-5
+
+    # Find the minimum using the C function
+    minimum = run_gradient_descent(init_guess, step_size, tolerance, delta)
 
     # Plot the function
     plt.figure(figsize=(10, 6))
-    plt.plot(x, y, label="$f(x) = |sin(4x) + 3|$", color="blue")
+    plt.plot(x_vals, y_vals, label="$f(x) = |sin(4x) + 3|$", color="blue")
 
     # Highlight the minimum point found
     plt.scatter([minimum], [f(minimum)], color="red", label="Minimum", zorder=5)

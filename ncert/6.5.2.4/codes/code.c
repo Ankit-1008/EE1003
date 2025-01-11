@@ -15,7 +15,7 @@ double df(double x, double delta) {
 
 // Function to generate points for the graph
 void generate_points(double *points, int n, double x_min, double x_max) {
-    double h = (x_max - x_min) / n;
+    double h = (x_max - x_min) / n; // Step size for x
     double x = x_min;
     for (int i = 0; i < n; i++) {
         points[2 * i] = x;        // x-coordinate
@@ -26,21 +26,25 @@ void generate_points(double *points, int n, double x_min, double x_max) {
 
 // Function to run gradient descent to find local minima or maxima
 void run_gradient_descent(double init_guess, double step_size, double tolerance, double delta, double *minimum) {
-    int count = 0;
+    int count = 0;                 // Iteration counter
     double current_guess = init_guess;
     double grad;
-    
+
     while (1) {
-        grad = df(current_guess, delta); // Calculate derivative
+        grad = df(current_guess, delta); // Calculate numerical derivative
         if (fabs(grad) < tolerance) {
-            break; // Stop when gradient is small enough
+            break; // Stop when gradient magnitude is smaller than tolerance
         }
-        current_guess -= step_size * grad; // Update using gradient descent
+        current_guess -= step_size * grad; // Update using gradient descent formula
         count++;
+        if (count > 1000) { // Prevent infinite loop
+            printf("Max iterations reached.\n");
+            break;
+        }
     }
-    
+
     printf("Number of iterations: %d\n", count);
-    *minimum = current_guess;
+    *minimum = current_guess; // Store the found minimum point
 }
 
 // Free memory allocated for points array
