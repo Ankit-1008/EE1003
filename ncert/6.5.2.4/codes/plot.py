@@ -1,6 +1,6 @@
-import ctypes
 import numpy as np
 import matplotlib.pyplot as plt
+import ctypes
 
 # Define the function f(x) = |sin(4x) + 3|
 def f(x):
@@ -14,20 +14,20 @@ def df(x, delta=1e-5):
 # Assuming the compiled shared library is named 'code.so'
 c_lib = ctypes.CDLL('./code.so')  # Replace with the actual name of your .so file
 
-# Define argument and return types for the C function 'run_gradient_descent'
-c_lib.run_gradient_descent.argtypes = [
+# Define argument and return types for the C function 'find_extremum'
+c_lib.find_extremum.argtypes = [
     ctypes.c_double,  # init_guess
     ctypes.c_double,  # step_size
     ctypes.c_double,  # tolerance
     ctypes.c_double,  # delta
-    ctypes.POINTER(ctypes.c_double)  # minimum (output)
+    ctypes.c_int,     # is_max (1 for max, 0 for min)
+    ctypes.POINTER(ctypes.c_double)  # extremum (output)
 ]
 
-# Gradient descent via the C function
-def run_gradient_descent(init_guess, step_size, tolerance, delta=1e-5):
-    minimum = ctypes.c_double(0)  # Placeholder for the result
-    c_lib.run_gradient_descent(init_guess, step_size, tolerance, delta, ctypes.byref(minimum))
-    return minimum.value
+def find_extremum(init_guess, step_size, tolerance, delta=1e-5, is_max=0):
+    extremum = ctypes.c_double(0)  # Placeholder for the result
+    c_lib.find_extremum(init_guess, step_size, tolerance, delta, is_max, ctypes.byref(extremum))
+    return extremum.value
 
 # Generate points for plotting
 def generate_points(n, x_min, x_max):
@@ -42,22 +42,28 @@ if __name__ == "__main__":
     n_points = 1000
     x_vals, y_vals = generate_points(n_points, x_min, x_max)
 
-    # Parameters for gradient descent
-    init_guess = 0.5
+    # Parameters for gradient descent and ascent
     step_size = 0.01
     tolerance = 1e-6
     delta = 1e-5
 
     # Find the minimum using the C function
-    minimum = run_gradient_descent(init_guess, step_size, tolerance, delta)
+    init_guess_min = 0.5
+    minimum = find_extremum(init_guess_min, step_size, tolerance, delta, is_max=0)
+
+    # Find the maximum using the C function
+    init_guess_max = 0.0
+    maximum = find_extremum(init_guess_max, step_size, tolerance, delta, is_max=1)
 
     # Plot the function
     plt.figure(figsize=(10, 6))
     plt.plot(x_vals, y_vals, label="$f(x) = |sin(4x) + 3|$", color="blue")
 
-    # Highlight the minimum point found
-    plt.scatter([minimum], [f(minimum)], color="red", label="Minimum", zorder=5)
-    plt.title("Function Plot and Gradient Descent")
+    # Highlight the minimum and maximum points found
+    plt.scatter([minimum], [f(minimum)], color="red", label=f"Minimum (x={minimum:.2f}, f(x)={f(minimum):.2f})", zorder=5)
+    plt.scatter([maximum], [f(maximum)], color="green", label=f"Maximum (x={maximum:.2f}, f(x)={f(maximum):.2f})", zorder=5)
+
+    plt.title("Function Plot with Gradient Descent and Ascent")
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.legend()
@@ -65,4 +71,5 @@ if __name__ == "__main__":
     plt.show()
 
     print(f"Local minimum found at x = {minimum}, f(x) = {f(minimum)}")
+    print(f"Local maximum found at x = {maximum}, f(x) = {f(maximum)}")
 

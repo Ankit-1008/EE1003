@@ -1,12 +1,9 @@
-\let\negmedspace\undefined
-\let\negthickspace\undefined
 \documentclass[journal]{IEEEtran}
 \usepackage[a5paper, margin=10mm, onecolumn]{geometry}
-%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
-\usepackage{tfrupee} % Include tfrupee package
+\usepackage{tfrupee}
 
-\setlength{\headheight}{1cm} % Set the height of the header box
-\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{0mm}
 
 \usepackage{gvv-book}
 \usepackage{gvv}
@@ -23,19 +20,19 @@
 \usepackage{gensymb}
 \usepackage{comment}
 \usepackage[breaklinks=true]{hyperref}
-\usepackage{tkz-euclide} 
+\usepackage{tkz-euclide}
 \usepackage{listings}
-% \usepackage{gvv}                                      
-\def\inputGnumericTable{}                                
-\usepackage[latin1]{inputenc}                                
-\usepackage{color}                                           
-\usepackage{array}                                           
-\usepackage{longtable}                                       
-\usepackage{calc}                                            
-\usepackage{multirow}                                        
-\usepackage{hhline}                                          
-\usepackage{ifthen}                                          
+\def\inputGnumericTable{}
+\usepackage[latin1]{inputenc}
+\usepackage{color}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
 \usepackage{lscape}
+
 \begin{document}
 
 \bibliographystyle{IEEEtran}
@@ -44,13 +41,10 @@
 \title{6.5.2.4}
 \author{EE24BTECH11004 - Ankit Jainar}
 \maketitle
-% \newpage
-% \bigskip
-{\let\newpage\relax\maketitle}
 
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
-\setlength{\intextsep}{10pt} % Space between text and floats
+\setlength{\intextsep}{10pt}
 
 \numberwithin{equation}{enumi}
 \numberwithin{figure}{enumi}
@@ -112,7 +106,7 @@ Thus, the maximum value of \(f(x)\) is 4, and the minimum value of \(f(x)\) is 3
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.7\columnwidth]{figs/fig.png}
-   \end{figure}
+\end{figure}
 
 \end{document}
 
