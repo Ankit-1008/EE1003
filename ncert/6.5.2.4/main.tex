@@ -5,15 +5,12 @@
 \setlength{\headheight}{1cm}
 \setlength{\headsep}{0mm}
 
-\usepackage{gvv-book}
-\usepackage{gvv}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
-\usepackage{txfonts}
 \usepackage{listings}
 \usepackage{enumitem}
 \usepackage{mathtools}
@@ -21,17 +18,10 @@
 \usepackage{comment}
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{tkz-euclide}
-\usepackage{listings}
-\def\inputGnumericTable{}
-\usepackage[latin1]{inputenc}
-\usepackage{color}
-\usepackage{array}
 \usepackage{longtable}
-\usepackage{calc}
 \usepackage{multirow}
 \usepackage{hhline}
-\usepackage{ifthen}
-\usepackage{lscape}
+\usepackage{array}
 
 \begin{document}
 
@@ -48,44 +38,57 @@
 
 \numberwithin{equation}{enumi}
 \numberwithin{figure}{enumi}
-\renewcommand{\thetable}{\theenumi}
 
 \textbf{Question}:\\
 Find the minimum and maximum values of the given function:\\
-$f(x) = |\sin(4x) + 3|$
-\\
+\[
+f(x) = |\sin(4x) + 3|
+\]
 
-\section*{Theoretical Method}
+\noindent \textbf{Theoretical Method}  
 We analyze the function theoretically to find its critical points. Let:
 \begin{align}
     f(x) = |g(x)|, \quad g(x) = \sin(4x) + 3
 \end{align}
 
-The critical points of \(g(x)\) occur where \(g'(x) = 0\). Differentiating \(g(x)\):
+The critical points of \(g(x)\) occur where \(g'(x) = 0\). Differentiating \(g(x)\):  
 \begin{align}
     g'(x) = 4\cos(4x)
-\end{align}
-Setting \(g'(x) = 0\), we find:
+\end{align}  
+Setting \(g'(x) = 0\), we find:  
 \begin{align}
     \cos(4x) = 0 \implies 4x = \frac{\pi}{2} + n\pi \implies x = \frac{\pi}{8} + \frac{n\pi}{4}, \; n \in \mathbb{Z}
 \end{align}
 
-For these \(x\)-values, we calculate \(g(x)\) to find the maximum and minimum values of \(|g(x)|\):
+For these \(x\)-values, we calculate \(g(x)\) to find the maximum and minimum values of \(|g(x)|\):  
 \begin{align}
     g(x) = \sin(4x) + 3, \quad f(x) = |g(x)|
-\end{align}
+\end{align}  
 At the critical points, evaluate \(f(x)\) directly to determine the local maximum and minimum values. The function \(f(x)\) achieves its minimum value at \(f(x) = 3\) and maximum value at \(f(x) = 4\).
 
-\section*{Computational Method}
-We use gradient descent to find the minima and maxima numerically. Gradient descent works iteratively using the following update rule:
+\noindent \textbf{Computational Method}  
+We numerically compute the minima and maxima of the function using gradient-based methods. The approach is divided into two cases:  
+
+\subsection*{Minima}  
+To find the minima, we use \textbf{gradient descent}, which iteratively updates the variable \(x\) according to the following rule:  
 \begin{align}
     x_{n+1} &= x_n - \mu f^{\prime}(x_n)
-\end{align}
+\end{align}  
+Here, \( \mu \) is the step size (learning rate), and \( f^{\prime}(x) \) is the derivative of the function. This process iteratively reduces the function value, converging to a local minimum.  
 
-The gradient \(f^{\prime}(x)\) is computed numerically as:
+\subsection*{Maxima}  
+To find the maxima, we use \textbf{gradient ascent}, which is analogous to gradient descent but involves moving in the opposite direction of the gradient:  
+\begin{align}
+    x_{n+1} &= x_n + \mu f^{\prime}(x_n)
+\end{align}  
+By updating \(x\) in the direction of the gradient, the function value increases iteratively, converging to a local maximum.  
+
+\subsection*{Numerical Gradient Computation}  
+The gradient \(f^{\prime}(x)\) is computed numerically using the central difference approximation:  
 \begin{align}
     f^{\prime}(x) \approx \frac{f(x + \delta) - f(x - \delta)}{2\delta}
-\end{align}
+\end{align}  
+Here, \(\delta\) is a small perturbation used to approximate the derivative.
 
 \noindent \textbf{Algorithm Steps:}
 \begin{itemize}
@@ -94,11 +97,11 @@ The gradient \(f^{\prime}(x)\) is computed numerically as:
     \item \textbf{Convergence:} Stop when \(|f^{\prime}(x_n)| < \text{threshold}\).
 \end{itemize}
 
-\noindent \textbf{Results:}
+\noindent \textbf{Results:}  
 Using an initial guess \(x = 0\), step size \(\mu = 0.01\), and threshold \(1e-5\), the numerical method yields:
 \begin{align}
-    x_{min} &= 0.785398, \; f(x_{min}) = 3.000000\\
-    x_{max} &= 0.392699, \; f(x_{max}) = 4.000000
+    x_{\text{min}} &= 0.785398, \; f(x_{\text{min}}) = 3.000000\\
+    x_{\text{max}} &= 0.392699, \; f(x_{\text{max}}) = 4.000000
 \end{align}
 
 Thus, the maximum value of \(f(x)\) is 4, and the minimum value of \(f(x)\) is 3. These values match the theoretical results.
