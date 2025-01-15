@@ -185,7 +185,10 @@ Let’s calculate \( Q \) and \( R \), then form \( \Lambda_1 = RQ \).
 
 \subsubsection*{Subsequent Iterations:}
 Repeat the QR decomposition on the new matrix \( \Lambda_1 \), then form \( \Lambda_2 = RQ \), and so on, until the matrix \( \Lambda_k \) converges to an upper triangular form. The diagonal elements of this matrix represent the eigenvalues of \( \Lambda_0 \), which are the roots of the quadratic equation.
-
+\subsection*{Updated equation:}
+\begin{align}
+    \Lambda_{k+1} &= R_k Q_k,
+\end{align}
 \subsection*{4. Eigenvalues and Roots}
 After sufficient iterations, the QR algorithm will converge to an upper triangular matrix where the diagonal entries are the eigenvalues. These eigenvalues correspond to the roots of the polynomial. In this case, the eigenvalues of the companion matrix \( \Lambda \) will give us the roots of the quadratic equation \( x^2 - 3x - 10 = 0 \).
 
