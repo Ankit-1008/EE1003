@@ -189,6 +189,32 @@ Repeat the QR decomposition on the new matrix \( \Lambda_1 \), then form \( \Lam
 \begin{align}
     \Lambda_{k+1} &= R_k Q_k,
 \end{align}
+The QR method is an iterative algorithm used to compute the eigenvalues of a square matrix \(\Lambda\). The algorithm works as follows:
+
+\begin{enumerate}
+    \item \textbf{Initialization}\\
+    Let \(A_0 = \Lambda\), where \(\Lambda\) is the given matrix.
+    \item \textbf{QR Decomposition}\\
+    For each iteration \(k = 0, 1, 2, \dots\):
+    \begin{enumerate}
+        \item Compute the QR decomposition of \(A_k\), such that:
+        \begin{align}
+        A_k = Q_k R_k \tag{1.17}
+        \end{align}
+        where:
+        \begin{enumerate}
+            \item \(Q_k\) is an orthogonal matrix (\(Q_k^\top Q_k = I\)).
+            \item \(R_k\) is an upper triangular matrix.
+        \end{enumerate}
+        The decomposition ensures \(\Lambda\ = Q_k R_k\).
+        \item Form the next matrix \(\Lambda_{k+1}\) as:
+        \begin{align}
+        \Lambda_{k+1} = R_k Q_k \tag{1.18}
+        \end{align}
+    \end{enumerate}
+    \item \textbf{Convergence}\\
+    Repeat Step 2 until \(\Lambda_k\) converges to an upper triangular matrix \(T\). The diagonal entries of \(T\) are the eigenvalues of \(\Lambda\).
+\end{enumerate}
 \subsection*{4. Eigenvalues and Roots}
 After sufficient iterations, the QR algorithm will converge to an upper triangular matrix where the diagonal entries are the eigenvalues. These eigenvalues correspond to the roots of the polynomial. In this case, the eigenvalues of the companion matrix \( \Lambda \) will give us the roots of the quadratic equation \( x^2 - 3x - 10 = 0 \).
 
