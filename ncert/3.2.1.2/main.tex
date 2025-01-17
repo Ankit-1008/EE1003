@@ -48,7 +48,7 @@ Performing these steps:
 \[
 x = 3, \quad y = 5.
 \]
-
+\section{Numerical Method:}
 \section{LU Decomposition to Solve the System}
 We now solve the system of equations using LU decomposition.
 
@@ -105,13 +105,21 @@ Using back substitution:
     -\frac{14}{5}y &= -24 \implies y = 5, \\
     5x + 7(5) &= 50 \implies x = 3.
 \end{align}
-
+\subsection{Updated Equation:}
+\begin{align}
+    A\vec{x} &= L \cdot U \cdot \vec{x} = \vec{b}, \\
+    A &= L \cdot U, \\
+    L \cdot U \cdot \vec{x} &= \vec{b}, \\
+    U \cdot \vec{x} &= \vec{y}, \\
+    L \cdot \vec{y} &= \vec{b}.
+\end{align}
 \subsection{Final Answer}
 The cost of one pencil is Rs.\(3\), and the cost of one pen is Rs.\(5\).
 
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.7\columnwidth]{figs/fig.png}
+    
 \end{figure}
 
 \end{document}
