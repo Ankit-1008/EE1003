@@ -35,6 +35,28 @@ The probability of getting exactly two tails is:
 \begin{align}
     P(A) = \frac{|A|}{|S|} = \frac{3}{8} = 0.375
 \end{align}
+\section*{Theoretical Solution Using Z-Transform}
+The probability mass function (PMF) of a single coin toss (X) is:
+\begin{align}
+    P(X = 0) &= 0.5, \quad P(X = 1) = 0.5.
+\end{align}
+Since we toss three coins, we define the generating function using the Z-transform:
+\begin{align}
+    G(z) = (0.5 + 0.5z)^3.
+\end{align}
+Expanding,
+\begin{align}
+    G(z) &= 0.125 + 0.375z + 0.375z^2 + 0.125z^3.
+\end{align}
+Thus, the PMF of the sum of tails (Y) is:
+\begin{align}
+    P(Y = k) = \begin{cases} 
+    0.125, & k = 0, \\
+    0.375, & k = 1, \\
+    0.375, & k = 2, \\
+    0.125, & k = 3.
+    \end{cases}
+\end{align}
 
 \section*{Introduction}
 This task involves simulating the random tossing of three coins using a C program, compiling it into a shared object (.so) file, and using Python to process the results and generate a probability distribution plot.
@@ -166,6 +188,10 @@ This task demonstrates the integration of C and Python for simulating and visual
 \begin{figure}[h!]
    \centering
    \includegraphics[width=\columnwidth]{figs/fig3.png}
+   \end{figure}
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=\columnwidth]{figs/fig4.png}
    \end{figure}
 \end{document}
 
