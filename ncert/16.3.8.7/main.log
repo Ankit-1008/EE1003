@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.8.7)  30 JAN 2025 23:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.8.7)  31 JAN 2025 01:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,58 +485,88 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
-5.
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
+0.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+) [2]
+Overfull \hbox (6.69325pt too wide) detected at line 138
+\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (2) = \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML
+/cmm/m/it/10 X \OMS/cmsy/m/n/10 ^^T \OT1/cmr/m/n/10 2) = \OML/cmm/m/it/10 P\OT1
+/cmr/m/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 0) + \OML/cmm/m/it/10 P\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 1) + \OML/cmm/m/it/10 P\OT1/cmr
+/m/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = 0\OML/cmm/m/it/10 :\OT1/cmr/
+m/n/10 125 + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 375 + 0\OML/cmm/m/it/10 :\OT1/c
+mr/m/n/10 375 = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 875\OML/cmm/m/it/10 :
+ []
 
-] [2] [3]
-<figs/fig1.png, id=67, 462.528pt x 346.896pt>
+
+Overfull \hbox (70.23837pt too wide) detected at line 143
+\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (3) = \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML
+/cmm/m/it/10 X \OMS/cmsy/m/n/10 ^^T \OT1/cmr/m/n/10 3) = \OML/cmm/m/it/10 P\OT1
+/cmr/m/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 0) + \OML/cmm/m/it/10 P\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 1) + \OML/cmm/m/it/10 P\OT1/cmr
+/m/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) + \OML/cmm/m/it/10 P\OT1/cmr/m
+/n/10 (\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 3) = 0\OML/cmm/m/it/10 :\OT1/cmr/m/
+n/10 125 + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 375 + 0\OML/cmm/m/it/10 :\OT1/cmr
+/m/n/10 375 + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 125 = 1\OML/cmm/m/it/10 :
+ []
+
+[3]
+<figs/fig1.png, id=59, 462.528pt x 346.896pt>
 File: figs/fig1.png Graphic file (type png)
 <use figs/fig1.png>
-Package pdftex.def Info: figs/fig1.png  used on input line 182.
+Package pdftex.def Info: figs/fig1.png  used on input line 217.
 (pdftex.def)             Requested size: 364.1953pt x 273.16086pt.
-<figs/fig2.png, id=69, 722.7pt x 433.62pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/fig2.png, id=61, 722.7pt x 433.62pt>
 File: figs/fig2.png Graphic file (type png)
 <use figs/fig2.png>
-Package pdftex.def Info: figs/fig2.png  used on input line 186.
+Package pdftex.def Info: figs/fig2.png  used on input line 221.
 (pdftex.def)             Requested size: 364.1953pt x 218.51653pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figs/fig3.png, id=70, 722.7pt x 433.62pt>
+<figs/fig3.png, id=62, 722.7pt x 433.62pt>
 File: figs/fig3.png Graphic file (type png)
 <use figs/fig3.png>
-Package pdftex.def Info: figs/fig3.png  used on input line 190.
+Package pdftex.def Info: figs/fig3.png  used on input line 225.
 (pdftex.def)             Requested size: 364.1953pt x 218.51653pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figs/fig4.png, id=71, 433.62pt x 289.08pt>
+<figs/fig4.png, id=63, 433.62pt x 289.08pt>
 File: figs/fig4.png Graphic file (type png)
 <use figs/fig4.png>
-Package pdftex.def Info: figs/fig4.png  used on input line 194.
+Package pdftex.def Info: figs/fig4.png  used on input line 229.
 (pdftex.def)             Requested size: 364.1953pt x 242.80789pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4 <./figs/fig1.png>] [5 <./figs/fig2.png> <./figs/fig3.png>] [6 <./figs/fig4.p
-ng>] (./main.aux)
+[4]
+
+LaTeX Warning: Text page 5 contains only floats.
+
+[5 <./figs/fig1.png> <./figs/fig2.png>] [6 <./figs/fig3.png> <./figs/fig4.png>]
+(./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 11048 strings out of 480247
- 174713 string characters out of 5896152
- 478785 words of memory out of 5000000
+ 11046 strings out of 480247
+ 174687 string characters out of 5896152
+ 479785 words of memory out of 5000000
  28810 multiletter control sequences out of 15000+600000
  500822 words of font info for 86 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,20n,63p,352b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,63p,352b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -548,10 +578,10 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 192951 bytes).
+Output written on main.pdf (6 pages, 193098 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
